@@ -7,6 +7,8 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PostgresqlUndDapper.Repositories;
+using PostgresqlUndDapper.RepositoriesPostgresql;
 
 namespace PostgresqlUndDapper
 {
@@ -28,6 +30,10 @@ namespace PostgresqlUndDapper
         {
             // Add framework services.
             services.AddMvc();
+
+            var connection = @"Server = 127.0.0.1; Port = 5432; Database = RetschgisPostgresqlTest; User Id = postgres; Password = {your password};";
+
+            services.AddSingleton<IEmployeeRepository, EmployeeRepository>(parameter => new EmployeeRepository(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
