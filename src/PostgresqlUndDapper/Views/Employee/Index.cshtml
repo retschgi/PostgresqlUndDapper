@@ -1,0 +1,27 @@
+﻿@using PostgresqlUndDapper.Models;
+@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Year of Contract</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Employee employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.Name</td>
+                    <td>@employee.YearOfContract</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
