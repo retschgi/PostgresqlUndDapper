@@ -1465,6 +1465,15 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "Npgsql/3.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Npgsql.dll": {}
+        }
+      },
       "System.Collections/4.0.0": {
         "type": "package",
         "compile": {
@@ -3141,6 +3150,15 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Npgsql/3.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Npgsql.dll": {}
         }
       },
       "System.Collections/4.0.0": {
@@ -4821,6 +4839,15 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "Npgsql/3.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Npgsql.dll": {}
+        }
+      },
       "System.Collections/4.0.0": {
         "type": "package",
         "compile": {
@@ -6193,6 +6220,17 @@
         "tools/install.ps1"
       ]
     },
+    "Npgsql/3.0.5": {
+      "type": "package",
+      "sha512": "tFLPYZC1WrBdJvzpRPIJRKSIgsmGER5gBQltJlbU99fXnyBpRAeuu1OIg/7uDcKFgTCJTKi1ieVOWQlxPu/8QA==",
+      "files": [
+        "lib/net45/Npgsql.dll",
+        "lib/net45/Npgsql.xml",
+        "Npgsql.3.0.5.nupkg",
+        "Npgsql.3.0.5.nupkg.sha512",
+        "Npgsql.nuspec"
+      ]
+    },
     "System.Collections/4.0.0": {
       "type": "package",
       "sha512": "i2vsGDIEbWdHcUSNDPKZP/ZWod6o740el7mGTCy0dqbCxQh74W4QoC+klUwPEtGEFuvzJ7bJgvwJqscosVNyZQ==",
@@ -6983,7 +7021,8 @@
       "Microsoft.Extensions.Logging >= 1.0.0-rc1-final",
       "Microsoft.Extensions.Logging.Console >= 1.0.0-rc1-final",
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
-      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc1-final"
+      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc1-final",
+      "Npgsql >= 3.0.5"
     ],
     "DNX,Version=v4.5.1": []
   }
