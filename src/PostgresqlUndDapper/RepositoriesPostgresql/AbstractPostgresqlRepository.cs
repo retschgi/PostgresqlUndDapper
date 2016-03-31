@@ -18,10 +18,19 @@ namespace PostgresqlUndDapper.RepositoriesPostgresql
             _connectionString = connectionString;
         }
 
+
+        protected NpgsqlConnection GetConnection()
+        {
+            NpgsqlConnection connection = new NpgsqlConnection(_connectionString);
+            connection.UserCertificateValidationCallback = delegate { return true; };
+            return connection;
+        }
+
+
         public IEnumerable<TEntity> Get()
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
-            {
+            using (NpgsqlConnection connection = GetConnection())
+            {   
                 connection.Open();
                 string query = string.Format("SELECT * FROM {0}", TableName);
                 return connection.Query<TEntity>(query);
@@ -30,7 +39,7 @@ namespace PostgresqlUndDapper.RepositoriesPostgresql
 
         public TEntity Get(TPrimaryKey id)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
+            using (NpgsqlConnection connection = GetConnection())
             {
                 connection.Open();
                 string query = string.Format("SELECT * FROM {0} WHERE Id = @Id LIMIT 1", TableName);
@@ -40,10 +49,9 @@ namespace PostgresqlUndDapper.RepositoriesPostgresql
 
         public void Add(TEntity entity)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
+            using (NpgsqlConnection connection = GetConnection())
             {
                 connection.Open();
-
                 IEnumerable<KeyValuePair<string, string>> RowsAndValues = ResolveProperties(entity);
                 IEnumerable<string> keys = RowsAndValues.Select(c => c.Key);
                 IEnumerable<string> values = RowsAndValues.Select(c => c.Value);
@@ -54,7 +62,7 @@ namespace PostgresqlUndDapper.RepositoriesPostgresql
 
         public void Update(TEntity entity)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
+            using (NpgsqlConnection connection = GetConnection())
             {
                 connection.Open();
 
@@ -68,7 +76,7 @@ namespace PostgresqlUndDapper.RepositoriesPostgresql
 
         public void Remove(TEntity entity)
         {
-            using (NpgsqlConnection connection = new NpgsqlConnection(_connectionString))
+            using (NpgsqlConnection connection = GetConnection())
             {
                 connection.Open();
                 string query = string.Format("DELETE FROM {0} WHERE Id = @Id", TableName);
