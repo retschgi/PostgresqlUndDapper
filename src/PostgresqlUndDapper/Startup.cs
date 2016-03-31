@@ -31,7 +31,7 @@ namespace PostgresqlUndDapper
             // Add framework services.
             services.AddMvc();
 
-            var connection = @"Server = 127.0.0.1; Port = 5432; Database = RetschgisPostgresqlTest; User Id = postgres; Password = {your password};";
+            var connection = @"Server = 127.0.0.1; Port = 5432; Database = RetschgisPostgresqlTest; User Id = postgres; Password = {your password}; SslMode=Require; UseSSLStream=true";
 
             services.AddSingleton<IEmployeeRepository, EmployeeRepository>(parameter => new EmployeeRepository(connection));
         }
